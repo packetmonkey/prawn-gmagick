@@ -8,7 +8,7 @@ additional image formats to [prawn](https://github.com/prawnpdf/prawn).
 **Gemfile**
 
 ```ruby
-gem "prawn-gamgick"
+gem "prawn-gmagick"
 ```
 
 **Your code**
