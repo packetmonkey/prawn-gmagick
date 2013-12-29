@@ -4,3 +4,4 @@ tmp/
 output.pdf
 *.bundle
 example.pdf
+*.gem
