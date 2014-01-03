@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "prawn-gmagick"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.platform    = Gem::Platform::RUBY
   s.authors = ["Evan Sharp"]
   s.license = "MIT"
