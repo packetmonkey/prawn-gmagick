@@ -17,6 +17,10 @@ gem "prawn-gmagick"
 require "prawn-gmagick"
 ```
 
+## Supported Image Formats
+prawn-gmagick will try to load any image passed to it that graphicsmagick can
+identify. To see what formats your installation supports run `gm version`.
+
 ## Found a bug?
 Open a [github issue](https://github.com/packetmonkey/prawn-gmagick/issues)
 
