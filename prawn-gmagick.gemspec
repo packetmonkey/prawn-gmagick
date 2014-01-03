@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary = "Use GraphicsMagick to load images in a Prawn docuemnt"
   s.extensions = %w[ext/gmagick/extconf.rb]
   s.require_path = "lib"
-  s.add_dependency "prawn", "0.13.0"
+  s.add_dependency "prawn", "~> 0.13"
   s.add_dependency "rake-compiler"
   s.add_development_dependency "minitest"
   s.files = Dir.glob("{ext,lib,test}/**/*") + %w[README.markdown Rakefile]
