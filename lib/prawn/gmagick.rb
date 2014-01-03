@@ -1,6 +1,5 @@
-require "prawn-gmagick/gmagick/gmagick"
-
 require "prawn"
+require "prawn/gmagick/image"
 
 class Gmagick < Prawn::Images::Image
   attr_reader :width, :height, :bits, :channels

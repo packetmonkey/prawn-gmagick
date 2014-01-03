@@ -128,7 +128,7 @@ VALUE image_alpha_unpack(VALUE self)
   return rb_str_new((const char *)pixels, pixel_count);
 }
 
-void Init_gmagick(void)
+void Init_image(void)
 {
   // Deine our name spaces and classes
   VALUE m_gmagick = rb_define_module("GMagick");

@@ -5,8 +5,8 @@ require "rake/extensiontask"
 
 task "default" => :test
 
-Rake::ExtensionTask.new "gmagick" do |ext|
-  ext.lib_dir = "lib/prawn-gmagick/gmagick"
+Rake::ExtensionTask.new "image" do |ext|
+  ext.lib_dir = "lib/prawn/gmagick"
 end
 
 Rake::TestTask.new do |t|
@@ -17,7 +17,7 @@ task "test" => :compile
 desc "Generate an example PDF using the images in test/fixtures"
 task "example" do
 $LOAD_PATH.unshift "./lib"
-  require "prawn-gmagick"
+  require "prawn/gmagick"
   doc = Prawn::Document.new margin: 0
   files = %w(rgb.gif rgb_alpha.gif rgb.jpg cmyk.jpg rgb.pdf rgb_alpha.pdf rgb.png rgb_alpha.png rgb.tiff rgb.bmp)
   files.each do |filename|

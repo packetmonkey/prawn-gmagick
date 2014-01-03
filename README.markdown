@@ -14,7 +14,7 @@ gem "prawn-gmagick"
 **Your code**
 
 ```ruby
-require "prawn-gmagick"
+require "prawn/gmagick"
 ```
 
 ## Supported Image Formats
