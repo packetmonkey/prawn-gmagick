@@ -5,3 +5,4 @@ output.pdf
 *.bundle
 example.pdf
 *.gem
+Gemfile.lock
