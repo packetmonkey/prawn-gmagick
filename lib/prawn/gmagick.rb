@@ -2,7 +2,7 @@ require "prawn"
 require "prawn/gmagick/image"
 
 class Gmagick < Prawn::Images::Image
-  attr_reader :width, :height, :bits, :channels
+  attr_accessor :width, :height, :bits
   attr_accessor :scaled_width, :scaled_height
   attr_accessor :gimage
 
@@ -12,10 +12,9 @@ class Gmagick < Prawn::Images::Image
 
   def initialize image_blob
     self.gimage = GMagick::Image.new image_blob
-
-    @bits = self.gimage.depth
-    @width = self.gimage.width
-    @height = self.gimage.height
+    self.bits = gimage.depth
+    self.width = gimage.width
+    self.height = gimage.height
   end
 
   def build_pdf_object(document)
@@ -23,9 +22,9 @@ class Gmagick < Prawn::Images::Image
       Type: :XObject,
       Subtype: :Image,
       ColorSpace: gimage.colorspace,
-      Height: @height,
-      Width: @width,
-      BitsPerComponent: @bits
+      Height: height,
+      Width: width,
+      BitsPerComponent: bits
     )
     obj << gimage.unpack
 
@@ -34,9 +33,9 @@ class Gmagick < Prawn::Images::Image
       smask_obj = document.ref!(
               :Type             => :XObject,
               :Subtype          => :Image,
-              :Height           => gimage.height,
-              :Width            => gimage.width,
-              :BitsPerComponent => gimage.depth,
+              :Height           => height,
+              :Width            => width,
+              :BitsPerComponent => bits,
               :ColorSpace       => :DeviceGray,
               :Decode           => [0, 1]
       )
