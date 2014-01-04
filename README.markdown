@@ -24,7 +24,7 @@ identify. To see what formats your installation supports run `gm version`.
 ## Speed
 In an unscientific speed test using [this PNG image](https://github.com/prawnpdf/png-testing/blob/master/book.png)
 on my MacBook Pro, prawn-gmagick shows a noticeable speed improvement
-over Prawn and comparable speed to prawn-fast-png.
+over Prawn and comparable speed to [prawn-fast-png](https://github.com/amberbit/prawn-fast-png).
 
 ```
 # Using prawn 0.12.0
