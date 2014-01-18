@@ -47,4 +47,5 @@ class Gmagick < Prawn::Images::Image
   end
 end
 
-Prawn.image_handler.register! Gmagick
+Prawn.image_handler.unregister Prawn::Images::PNG
+Prawn.image_handler.register Gmagick
