@@ -84,7 +84,7 @@ describe GMagick::Image do
       end
 
       it "returns a string containing the pixel color information" do
-        @image.unpack.unpack("CCCC").must_equal [55, 27, 0, 0]
+        @image.unpack.unpack("CCCC").must_equal [0, 255, 255, 0]
       end
     end
   end
