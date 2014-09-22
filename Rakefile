@@ -5,9 +5,7 @@ require "rake/extensiontask"
 
 task "default" => :test
 
-Rake::ExtensionTask.new "image" do |ext|
-  ext.lib_dir = "lib/prawn/gmagick"
-end
+Rake::ExtensionTask.new "image"
 
 Rake::TestTask.new do |t|
     t.pattern = "test/**/*_test.rb"
