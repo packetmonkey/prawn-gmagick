@@ -1,5 +1,5 @@
 require "prawn"
-require_relative "./gmagick/image"
+require_relative "../image"
 
 class Gmagick < Prawn::Images::Image
   attr_accessor :width, :height, :bits
