@@ -1,3 +1,5 @@
+Token edit
+
 # prawn-gmagick
 
 A [graphicsmagick](http:////www.graphicsmagick.org/) binding to add support for
