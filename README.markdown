@@ -1,4 +1,4 @@
-Token edit
+Token edit X
 
 # prawn-gmagick
 
