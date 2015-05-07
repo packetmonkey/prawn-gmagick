@@ -26,7 +26,9 @@ class Gmagick < Prawn::Images::Image
       Width: width,
       BitsPerComponent: bits
     )
+
     obj << gimage.unpack
+    obj.stream.filters << { FlateDecode: nil }
 
     alpha_mask = self.gimage.alpha_unpack
     if alpha_mask.unpack("C*").uniq.length > 1
