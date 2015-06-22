@@ -6,3 +6,5 @@ output.pdf
 example.pdf
 *.gem
 Gemfile.lock
+.vagrant
+*.so
