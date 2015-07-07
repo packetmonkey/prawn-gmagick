@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [Unreleased][unreleased]
+### Fixed
+- Plug several large memory leaks
+- Return image depth not channel depth when calling GMagick::Image#depth
+
 ## 0.0.7 - 2015-05-07
 ### Changed
 - Apply FlateDecode to image streams (PR #10 Evan Sharp)
