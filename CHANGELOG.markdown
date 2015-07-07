@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [Unreleased][unreleased]
+## 0.0.8 - 2015-07-07
 ### Fixed
 - Plug several large memory leaks
 - Return image depth not channel depth when calling GMagick::Image#depth
