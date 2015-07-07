@@ -42,7 +42,7 @@ VALUE image_depth(VALUE self)
 
   MagickReadImageBlob(magick_wand, image_blob, image_blob_length);
 
-  unsigned long depth = MagickGetImageChannelDepth(magick_wand, RedChannel);
+  unsigned long depth = MagickGetImageDepth(magick_wand);
 
   DestroyMagickWand(magick_wand);
   DestroyMagick();
