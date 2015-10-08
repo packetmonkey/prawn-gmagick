@@ -47,13 +47,13 @@ ruby png_example.rb  1.17s user 0.20s system 93% cpu 1.463 total
 
 ## Amazon EC2 / Elastic Beanstalk Installation
 To allow the gem to install successfuly, you may need to run some (or all) of the following commands on your EC2 instance:
-```
+```console
 sudo yum install GraphicsMagick
 sudo yum install GraphicsMagick-c++
 sudo yum install GraphicsMagick-devel
 ```
 For an Elastic Beanstalk deployment you will need to create an `.ebextensions\packages.config` file, add the following and then commit it to git:
-```
+```yaml
 packages:
   yum:
     GraphicsMagick: []
