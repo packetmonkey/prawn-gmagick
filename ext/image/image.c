@@ -8,7 +8,7 @@ VALUE format(VALUE self, VALUE rb_image_blob)
   long double image_blob_length = RSTRING_LEN(rb_image_blob);
   char *image_blob = RSTRING_PTR(rb_image_blob);
 
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
 
   MagickWand *magick_wand = NewMagickWand();
   MagickReadImageBlob(magick_wand, (const unsigned char *)image_blob, image_blob_length);
@@ -16,7 +16,7 @@ VALUE format(VALUE self, VALUE rb_image_blob)
   format = MagickGetImageFormat(magick_wand);
 
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
   if (format) {
     return rb_str_new2(format);
@@ -33,7 +33,7 @@ VALUE image_initialize(VALUE self, VALUE rb_image_blob)
 
 VALUE image_depth(VALUE self)
 {
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
   MagickWand *magick_wand = NewMagickWand();
 
   VALUE rb_blob = rb_funcall(self, rb_intern("blob"), 0);
@@ -45,14 +45,14 @@ VALUE image_depth(VALUE self)
   unsigned long depth = MagickGetImageDepth(magick_wand);
 
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
   return INT2NUM(depth);
 }
 
 VALUE image_width(VALUE self)
 {
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
   MagickWand *magick_wand = NewMagickWand();
 
   VALUE rb_blob = rb_funcall(self, rb_intern("blob"), 0);
@@ -64,7 +64,7 @@ VALUE image_width(VALUE self)
   unsigned long width = MagickGetImageWidth(magick_wand);
 
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
 
   return INT2NUM(width);
@@ -72,7 +72,7 @@ VALUE image_width(VALUE self)
 
 VALUE image_height(VALUE self)
 {
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
   MagickWand *magick_wand = NewMagickWand();
 
   VALUE rb_blob = rb_funcall(self, rb_intern("blob"), 0);
@@ -84,14 +84,14 @@ VALUE image_height(VALUE self)
   unsigned long height = MagickGetImageHeight(magick_wand);
 
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
   return INT2NUM(height);
 }
 
 VALUE image_colorspace(VALUE self)
 {
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
   MagickWand *magick_wand = NewMagickWand();
 
   VALUE rb_blob = rb_funcall(self, rb_intern("blob"), 0);
@@ -103,9 +103,11 @@ VALUE image_colorspace(VALUE self)
   ColorspaceType color_space = MagickGetImageColorspace(magick_wand);
 
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
   if (color_space == RGBColorspace) {
+    return ID2SYM(rb_intern("DeviceRGB"));
+  } else if (color_space == sRGBColorspace) {
     return ID2SYM(rb_intern("DeviceRGB"));
   } else if (color_space == CMYKColorspace) {
     return ID2SYM(rb_intern("DeviceCMYK"));
@@ -116,7 +118,7 @@ VALUE image_colorspace(VALUE self)
 
 VALUE image_unpack(VALUE self)
 {
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
   MagickWand *magick_wand = NewMagickWand();
 
   VALUE rb_blob = rb_funcall(self, rb_intern("blob"), 0);
@@ -134,8 +136,11 @@ VALUE image_unpack(VALUE self)
   unsigned char *pixels;
 
   if (color_space == RGBColorspace) {
-     buffer_size = 3 * pixel_count;
-     strcpy(color_format, "RGB");
+    buffer_size = 3 * pixel_count;
+    strcpy(color_format, "RGB");
+  } else if (color_space == sRGBColorspace) {
+    buffer_size = 3 * pixel_count;
+    strcpy(color_format, "RGB");
   } else if (color_space == CMYKColorspace) {
      buffer_size = 4 * pixel_count;
      strcpy(color_format, "CMYK");
@@ -152,14 +157,14 @@ VALUE image_unpack(VALUE self)
 
   free(pixels);
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
   return rb_pixels;
 }
 
 VALUE image_alpha_unpack(VALUE self)
 {
-  InitializeMagick(".");
+  MagickCoreGenesis(".", MagickFalse);
   MagickWand *magick_wand = NewMagickWand();
 
   VALUE rb_blob = rb_funcall(self, rb_intern("blob"), 0);
@@ -181,7 +186,7 @@ VALUE image_alpha_unpack(VALUE self)
 
   free(pixels);
   DestroyMagickWand(magick_wand);
-  DestroyMagick();
+  MagickCoreTerminus();
 
   return rb_pixels;
 }
