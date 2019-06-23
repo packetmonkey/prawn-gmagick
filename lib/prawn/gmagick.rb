@@ -42,6 +42,8 @@ class Gmagick < Prawn::Images::Image
               :Decode           => [0, 1]
       )
       smask_obj.stream << alpha_mask
+      smask_obj.stream.filters << { FlateDecode: nil }
+
       obj.data[:SMask] = smask_obj
     end
 
