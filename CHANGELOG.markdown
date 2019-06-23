@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## 0.0.9 - UNRELEASED - 2017-07-05
+## 0.0.9 - 2019-06-23
 ### Changed
 - Apply FlateDecode to alpha channel of image streams (PR #15 Jon Oster)
 
